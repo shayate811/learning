@@ -1,17 +1,5 @@
 ## 📐 Architecture Overview
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#fff', 'edgeLabelBackground':'#fff', 'tertiaryColor': '#f4f4f4'}}}%%
-graph LR
-    Client(["💻 Client Browser"]) -- "HTTP Request (Port 80)" --> Nginx
+本環境の構成図です。Nginxがリバースプロキシとして機能し、バックエンドのSinatraアプリケーションがデータベースと通信します。
 
-    subgraph "Docker Compose Network (Isolated)"
-        direction LR
-        Nginx["🚀 nginx<br/>(Web Server / Reverse Proxy)"]:::web -- "Proxy Pass (Internal Port)" --> Sinatra["💎 sinatra<br/>(App Server / Ruby)"]:::app
-        Sinatra -- "SQL Query (Port 3306)" --> MySQL[("🗄️ mysql<br/> Database")]:::db
-    end
-
-    %% スタイルの定義
-    classDef web fill:#66bb6a,stroke:#2e7d32,color:white,stroke-width:2px;
-    classDef app fill:#ef5350,stroke:#c62828,color:white,stroke-width:2px;
-    classDef db fill:#42a5f5,stroke:#1565c0,color:white,stroke-width:2px;
+![Docker Architecture Diagram](./images/docker-architecture.png)
