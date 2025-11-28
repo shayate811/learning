@@ -1,0 +1,38 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    json (2.15.1)
+    multi_json (1.15.0)
+    mustermann (1.1.2)
+      ruby2_keywords (~> 0.0.1)
+    mysql2 (0.5.2)
+    rack (2.2.20)
+    rack-protection (2.2.0)
+      rack
+    ruby2_keywords (0.0.5)
+    sinatra (2.2.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.2.0)
+      tilt (~> 2.0)
+    sinatra-contrib (2.2.0)
+      multi_json
+      mustermann (~> 1.0)
+      rack-protection (= 2.2.0)
+      sinatra (= 2.2.0)
+      tilt (~> 2.0)
+    tilt (2.6.1)
+    webrick (1.7.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  json
+  mysql2 (= 0.5.2)
+  sinatra (= 2.2.0)
+  sinatra-contrib (= 2.2.0)
+  webrick (= 1.7.0)
+
+BUNDLED WITH
+   2.1.4
