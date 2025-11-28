@@ -14,7 +14,7 @@
 | **Backend** | **Go** | 🏗️ **In Progress** | API開発, 並行処理 |
 | | **Java** | ✅ Basic | オブジェクト指向, Spring Boot |
 | | **Python** | ✅ Basic | データ処理, Scripting |
-| **Frontend** | **React / Next.js** | 🌱 Planned | SPA/SSGの理解, TypeScript |
+| **Frontend** | **React / Next.js** | 🏗️ **In Progress:** | SPA/SSGの理解, TypeScript |
 | **Database** | **MySQL** | 🏗️ **In Progress** | SQL設計, Docker連携 |
 
 > **Status Legend:**
