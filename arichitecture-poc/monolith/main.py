@@ -6,12 +6,12 @@ app = FastAPI()
 # --- 擬似的なモジュール（関数呼び出し） ---
 def process_payment():
     # DB書き込みなどをシミュレート (50ms)
-    time.sleep(0.05)
+    time.sleep(0.001)
     return {"status": "paid", "transaction_id": "tx_123"}
 
 def check_inventory():
     # DB読み込みなどをシミュレート (50ms)
-    time.sleep(0.05)
+    time.sleep(0.001)
     return {"status": "ok", "stock": 99}
 
 # --- エンドポイント ---

@@ -35,3 +35,15 @@ services:
       - ./microservices/inventory:/app
     expose:
       - "8000"
+
+  # 4. 負荷試験ツール (Locust)
+  load-test:
+    image: locustio/locust
+    volumes:
+      - ./locustfile.py:/mnt/locust/locustfile.py
+    ports:
+      - "8089:8089"
+    command: -f /mnt/locust/locustfile.py
+    depends_on:
+      - monolith
+      - order
