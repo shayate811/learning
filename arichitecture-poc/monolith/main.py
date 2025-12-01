@@ -1,7 +1,11 @@
 import time
 from fastapi import FastAPI
+import sys
+sys.path.append("..") # 親ディレクトリのtelemetry.pyを読み込むため
+from telemetry import instrument_app
 
 app = FastAPI()
+instrument_app(app, service_name="monolith-service")
 
 # --- 擬似的なモジュール（関数呼び出し） ---
 def process_payment():

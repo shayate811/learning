@@ -1,8 +1,12 @@
 import time
 import httpx
 from fastapi import FastAPI
+import sys
+sys.path.append("../..") # 2階層上を見る
+from telemetry import instrument_app
 
 app = FastAPI()
+instrument_app(app, service_name="order-service")
 
 # Docker Composeのサービス名をホスト名として指定
 PAYMENT_URL = "http://payment:8000/pay"

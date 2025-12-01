@@ -1,38 +1,39 @@
 services:
-  # --- モノリス (Port 8001) ---
+  # --- モノリス ---
   monolith:
     build: .
     volumes:
       - ./monolith:/app
+      - ./telemetry.py:/telemetry.py
     ports:
       - "8001:8000"
 
   # --- マイクロサービス群 ---
-
-  # 1. 注文サービス (入口: Port 8002)
   order:
     build: .
     volumes:
       - ./microservices/order:/app
+      - ./telemetry.py:/telemetry.py
     ports:
       - "8002:8000"
     depends_on:
       - payment
       - inventory
+      - jaeger # (あれば)
 
-  # 2. 決済サービス (外部公開不要・内部のみ)
   payment:
     build: .
     volumes:
       - ./microservices/payment:/app
+      - ./telemetry.py:/telemetry.py
     expose:
       - "8000"
 
-  # 3. 在庫サービス (外部公開不要・内部のみ)
   inventory:
     build: .
     volumes:
       - ./microservices/inventory:/app
+      - ./telemetry.py:/telemetry.py
     expose:
       - "8000"
 
@@ -47,3 +48,12 @@ services:
     depends_on:
       - monolith
       - order
+
+  # --- 追加: Jaeger (All-in-one) ---
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686" # 管理画面 (UI)
+      - "4317:4317" # データ受信 (OTLP gRPC)
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
