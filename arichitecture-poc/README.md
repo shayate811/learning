@@ -13,6 +13,8 @@
 
 ## ⚡️ アーキテクチャの比較概要
 
+![Docker Architecture Diagram](./images/pocArchitecture.png)
+
 本PoCでは、純粋な「通信コスト」の差を測定するため、ビジネスロジックの処理時間を極小（**1ms**）に設定しています。
 
 * **モノリス構成:** すべての処理を単一のプロセス内で関数呼び出しとして実行。
@@ -77,4 +79,5 @@ docker-compose down
     ├── payment/            # 決済サービス
     └── inventory/          # 在庫サービス
 ```
+
 
