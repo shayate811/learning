@@ -1,0 +1,37 @@
+services:
+  # --- モノリス (Port 8001) ---
+  monolith:
+    build: .
+    volumes:
+      - ./monolith:/app
+    ports:
+      - "8001:8000"
+
+  # --- マイクロサービス群 ---
+
+  # 1. 注文サービス (入口: Port 8002)
+  order:
+    build: .
+    volumes:
+      - ./microservices/order:/app
+    ports:
+      - "8002:8000"
+    depends_on:
+      - payment
+      - inventory
+
+  # 2. 決済サービス (外部公開不要・内部のみ)
+  payment:
+    build: .
+    volumes:
+      - ./microservices/payment:/app
+    expose:
+      - "8000"
+
+  # 3. 在庫サービス (外部公開不要・内部のみ)
+  inventory:
+    build: .
+    volumes:
+      - ./microservices/inventory:/app
+    expose:
+      - "8000"
