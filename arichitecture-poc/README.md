@@ -7,7 +7,7 @@
 <br>
 
 **📖 検証結果の詳細な解説記事 (Zenn)**
-👉 [【検証】モノリス vs マイクロサービス：通信オーバーヘッドという「税金」を実測してみた](https://zenn.dev/shayate811/articles/monolith-vs-microservices)
+👉 [【検証】マイクロサービス化で通信遅延は倍増？Python/FastAPIでオーバーヘッドを実測比較してみた](https://zenn.dev/shayate811/articles/monolith-vs-microservices)
 
 ---
 
